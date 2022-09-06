@@ -50,23 +50,27 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   //  list = document.getElementById("faultyItems")
   //  pilotStatus.innerHTML = `Pilot ${pilot} checked and ready for launch`;
   //  copilotStatus.innerHTML = `Co-pilot ${copilot} checked and ready for launch`;
+  const COLOR_GREEN = "rgb(65, 159, 106)";
+  const COLOR_RED = "rgb(199, 37, 78)";
 
    if (Number(fuelLevel) < 10000) {
     let faultyItems = document.querySelector("div[id=faultyItems]")
+    list.style.visibility = "visible"
     fuelStatus.innerHTML = `Fuel levels too low for launch`
     launchStatus.innerHTML = `Shuttle not ready for launch`
-    launchStatus.style.color = "red"
+    launchStatus.style.color = COLOR_RED
    }
    if (Number(cargoLevel) > 10000) {
+    list.style.visibility = "visible"
     cargoStatus.innerHTML = `Cargo mass to high for launch`
     launchStatus.innerHTML = `Shuttle not ready for launch`
-    launchStatus.style.color = "red"
+    launchStatus.style.color = COLOR_RED
    }
    if (Number(cargoLevel) <= 10000 && Number(fuelLevel) >= 10000) {
     list.style.visibility = "visible";
     fuelStatus.innerHTML = `Fuel levels adequate for launch`;
     cargoStatus.innerHTML = `Cargo mass adequate for launch`;
-    launchStatus.style.color = "green";
+    launchStatus.style.color = COLOR_GREEN;
     launchStatus.innerHTML = `Shuttle is Ready for Launch`;
    }
 
