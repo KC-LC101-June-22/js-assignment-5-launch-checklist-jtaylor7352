@@ -20,9 +20,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 function validateInput(testInput) {
     if (testInput === "") {
       return "Empty";
-    } else if (isNaN(testInput)) {
+    } else if (isNaN(Number(testInput))) {
       return "Not a number";
-    } else if (testInput.type === Number) {
+    } else if (!isNaN(Number(testInput))) {
       return "Is a number";
     }
 }
@@ -54,12 +54,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   const COLOR_RED = "rgb(199, 37, 78)";
 
    if (Number(fuelLevel) < 10000) {
-    let faultyItems = document.querySelector("div[id=faultyItems]")
     list.style.visibility = "visible"
     fuelStatus.innerHTML = `Fuel level too low for launch`
     launchStatus.innerHTML = `Shuttle Not Ready for Launch`
     launchStatus.style.color = COLOR_RED
-   }
+   } 
    if (Number(cargoLevel) > 10000) {
     list.style.visibility = "visible"
     cargoStatus.innerHTML = `Cargo mass too heavy for launch`
