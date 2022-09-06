@@ -28,16 +28,28 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   pilotInput = document.queryselector("input[name=pilotName]");
-   copilotInput = document.queryselector("input[name=copilotName]");
-   fuelLevelInput = document.queryselector("input[name=fuelLevel]");
-   cargoLevelInput = document.queryselector("input[name=cargoMass]");
-   let document = window.document;
-   let pilotStatus = document.querySelector("li[id=pilotStatus]");
-   let copilotStatus = document.querySelector("li[id=copilotStatus]");
-   list = document.getElementById("faultyItems")
-   pilotStatus.innerHTML = `Pilot ${pilot} checked and ready for launch`;
-   copilotStatus.innerHTML = `Co-pilot ${copilot} checked and ready for launch`;
+  let copilotStatus = document.querySelector("li[id=copilotStatus]");
+  let pilotName = document.querySelector("input[name=pilotName]");
+  let copilotName = document.querySelector("input[name=copilotName]");
+  let cargoMass = document.querySelector("input[name=cargoMass]");
+  let pilotStatus = document.querySelector("li[id=pilotStatus]");
+  let fuelStatus = document.querySelector("li[id=fuelStatus]")
+  let cargoStatus = document.querySelector("li[id=cargoStatus]")
+  let launchStatus = document.querySelector("h2[id=launchStatus]");
+
+  list.style.visibility = "hidden";
+  pilotStatus.innerHTML = `Pilot ${pilot} checked and ready for launch`;
+  copilotStatus.innerHTML = `Co-pilot ${copilot} checked and ready for launch`;
+  //  pilotName = document.queryselector("input[name=pilotName]");
+  //  copilotName = document.queryselector("input[name=copilotName]");
+  //  fuelStatus = document.queryselector("input[name=fuelLevel]");
+  //  cargoStatus = document.queryselector("input[name=cargoMass]");
+  //  let document = window.document;
+  //  let pilotStatus = document.querySelector("li[id=pilotStatus]");
+  //  let copilotStatus = document.querySelector("li[id=copilotStatus]");
+  //  list = document.getElementById("faultyItems")
+  //  pilotStatus.innerHTML = `Pilot ${pilot} checked and ready for launch`;
+  //  copilotStatus.innerHTML = `Co-pilot ${copilot} checked and ready for launch`;
 
    if (Number(fuelLevel) < 10000) {
     let faultyItems = document.querySelector("div[id=faultyItems]")
@@ -65,7 +77,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) { return response.json();
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) { 
+      return response.json();
         });
 
     return planetsReturned;
