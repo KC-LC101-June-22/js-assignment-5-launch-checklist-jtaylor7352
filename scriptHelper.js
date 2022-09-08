@@ -21,9 +21,9 @@ function validateInput(testInput) {
     if (testInput === "") {
       return "Empty";
     } else if (isNaN(Number(testInput))) {
-      return "Not a number";
+      return "Not a Number";
     } else if (!isNaN(Number(testInput))) {
-      return "Is a number";
+      return "Is a Number";
     }
 }
 
@@ -58,7 +58,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     fuelStatus.innerHTML = `Fuel level too low for launch`
     launchStatus.innerHTML = `Shuttle Not Ready for Launch`
     launchStatus.style.color = COLOR_RED
-   } 
+   } else {
+    fuelStatus.innerHTML = `Fuel level high enough for launch`
+   }
    if (Number(cargoLevel) > 10000) {
     list.style.visibility = "visible"
     cargoStatus.innerHTML = `Cargo mass too heavy for launch`
